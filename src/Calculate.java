@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 import static java.lang.Integer.*;
 
 /**
@@ -7,21 +9,29 @@ import static java.lang.Integer.*;
 public class Calculate {
     public static void main(String[] args){
         System.out.println("Calculating...");
-        int first, second;
+        Integer result;
 
         try {
-            first = valueOf(args[0]);
-            second = valueOf(args[1]);
+            for(String arg : args){
+                result += valueOf(arg);
+            }
         }
         catch (Exception e){
-            first = 0;
-            second = 0;
+            result = null;
         }
         finally {
-            //TODO: ...
+            if (result != null) System.out.println(result)
+                else System.out.println("Error in arguments...")
         }
 
-        int sum = first + second;
-        System.out.println(sum);
+        Calculator calc = new Calculator();
+        Scanner sc = new Scanner(System.in);
+        String next = "";
+        while ((sc.hasNext() && !next.equals("q"))) {
+                next = sc.next();
+                System.out.print(next);
+
+        }
+
     }
 }
