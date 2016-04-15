@@ -4,13 +4,13 @@
  */
 public class Calculator {
 
-    private int result;
+    private Double result;
 
     /**
      Суммирует параметры
      */
-    public void add(int ... params){
-        for(Integer p : params){
+    public void add(Double ... params){
+        for(Double p : params){
             this.result += p;
         }
     }
@@ -18,14 +18,14 @@ public class Calculator {
     /**
      Выдает результат
      */
-    public int getResult(){
+    public Double getResult(){
         return this.result;
     }
 
     /**
      Очищает результат
      */
-    public cleanResult(){
-        this.result = 0;
+    public void cleanResult(){
+        this.result = 0D;
     }
 }

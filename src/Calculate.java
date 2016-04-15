@@ -1,3 +1,4 @@
+import java.util.DoubleSummaryStatistics;
 import java.util.Scanner;
 
 import static java.lang.Integer.*;
@@ -9,29 +10,38 @@ import static java.lang.Integer.*;
 public class Calculate {
     public static void main(String[] args){
         System.out.println("Calculating...");
-        Integer result;
-
-        try {
-            for(String arg : args){
-                result += valueOf(arg);
-            }
-        }
-        catch (Exception e){
-            result = null;
-        }
-        finally {
-            if (result != null) System.out.println(result)
-                else System.out.println("Error in arguments...")
-        }
+        Double result = 0D;
 
         Calculator calc = new Calculator();
         Scanner sc = new Scanner(System.in);
+
+        Double num = 0D;
+        int countArgs = 0;
+
+        for(String next : args){
+            try {
+                num = Double.valueOf(next);
+            }
+            catch (Exception e){
+                num = null;
+            }
+            finally {
+                if (num != null) {
+                    result += num;
+                    countArgs++;
+                }
+            }
+        }
+
+        System.out.println(countArgs + " arguments, sum=" + result);
+
         String next = "";
-        while ((sc.hasNext() && !next.equals("q"))) {
-                next = sc.next();
+        do {
+                if (sc.hasNext()) next = sc.next();
                 System.out.print(next);
 
-        }
+        } while (!next.equals("q"));
+        sc.close();
 
     }
 }
